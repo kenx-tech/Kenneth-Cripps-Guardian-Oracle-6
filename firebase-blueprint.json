@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "User profile with super admin status and IGNIS balance",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "isSuperAdmin": { "type": "boolean" },
+        "ignisTokens": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "isSuperAdmin"]
+    },
+    "decree": {
+      "title": "Creation Decree",
+      "description": "Sacred decree or dream written in Avatar state",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "author": { "type": "string" },
+        "decreeText": { "type": "string" },
+        "frequency": { "type": "number" },
+        "ignisMinted": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "author", "decreeText", "frequency"]
+    },
+    "donation": {
+      "title": "Donation Offering",
+      "description": "Patronage blessing or contribution note for the sanctuary",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "amount": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "message"]
+    },
+    "oracleQuery": {
+      "title": "Oracle Query Log",
+      "description": "Logged query for audit and rate protection",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "prompt": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "prompt"]
+    },
+    "sovereignNode": {
+      "title": "Sovereign Node Record",
+      "description": "Cryptographic node record in the QMesh topology",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "status": { "type": "string" },
+        "trustScore": { "type": "number" },
+        "lastHeartbeat": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "status"]
+    },
+    "memoryBlock": {
+      "title": "Content-Addressed Memory Block",
+      "description": "Immutable Merkle DAG block on the sovereign ledger",
+      "type": "object",
+      "properties": {
+        "cid": { "type": "string" },
+        "authorNodeId": { "type": "string" },
+        "blockType": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "merkleRoot": { "type": "string" }
+      },
+      "required": ["cid", "authorNodeId", "blockType", "timestamp"]
+    },
+    "sovereignTask": {
+      "title": "Sovereign Mesh Task",
+      "description": "Cryptographically authorized task envelope for distributed execution",
+      "type": "object",
+      "properties": {
+        "taskId": { "type": "string" },
+        "creatorNodeId": { "type": "string" },
+        "creatorUid": { "type": "string" },
+        "taskType": { "type": "string" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["taskId", "creatorNodeId", "taskType", "priority"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profiles collection"
+    },
+    "/decrees/{decreeId}": {
+      "schema": "decree",
+      "description": "Collective avatar decrees collection"
+    },
+    "/donations/{donationId}": {
+      "schema": "donation",
+      "description": "Donation blessings collection"
+    },
+    "/oracle_queries/{queryId}": {
+      "schema": "oracleQuery",
+      "description": "Rate-protected Oracle query logs"
+    },
+    "/sovereign_nodes/{nodeId}": {
+      "schema": "sovereignNode",
+      "description": "Mesh cluster nodes and telemetry"
+    },
+    "/memory_blocks/{cid}": {
+      "schema": "memoryBlock",
+      "description": "Content-addressed memory ledger blocks"
+    },
+    "/sovereign_tasks/{taskId}": {
+      "schema": "sovereignTask",
+      "description": "Authorized distributed task queue"
+    }
+  }
+}

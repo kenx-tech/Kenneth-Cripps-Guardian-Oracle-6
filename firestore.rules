@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isSuperAdmin() {
+      return isSignedIn() && request.auth.token.email != null && request.auth.token.email.toLowerCase() == 'kenx@guardianoracle.com';
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create, update: if isOwner(userId) || isSuperAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    // Decrees collection
+    match /decrees/{decreeId} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if isSuperAdmin() || (isSignedIn() && resource.data.uid == request.auth.uid);
+    }
+
+    // Donations collection
+    match /donations/{donationId} {
+      allow read: if isSuperAdmin();
+      allow create: if true; // Allows seekers to record blessings or pledge notes
+      allow update, delete: if isSuperAdmin();
+    }
+
+    // Oracle queries rate-protected collection
+    match /oracle_queries/{queryId} {
+      allow read: if isSignedIn();
+      allow create: if isSuperAdmin() || (
+        isSignedIn() && request.resource.data.uid == request.auth.uid
+      );
+      allow update, delete: if isSuperAdmin();
+    }
+
+    // Sovereign Nodes collection (Mesh peer discovery & telemetry - Authenticated only)
+    match /sovereign_nodes/{nodeId} {
+      allow read: if isSignedIn() || isSuperAdmin();
+      allow create: if isSignedIn() && request.resource.id == nodeId && (request.resource.data.ownerUid == request.auth.uid || isSuperAdmin());
+      allow update: if isSignedIn() && request.resource.id == nodeId && (resource.data.ownerUid == request.auth.uid || isSuperAdmin());
+      allow delete: if isSuperAdmin();
+    }
+
+    // Memory Blocks collection (Content-addressed Merkle DAG - Append-only & strictly immutable)
+    match /memory_blocks/{cid} {
+      allow read: if isSignedIn() || isSuperAdmin();
+      allow create: if isSignedIn() &&
+        request.resource.id == cid &&
+        request.resource.data.cid == cid &&
+        request.resource.data.keys().hasAll(['cid', 'authorNodeId', 'blockType', 'data', 'timestamp']) &&
+        request.resource.data.keys().hasOnly(['cid', 'authorNodeId', 'authorScope', 'blockType', 'data', 'timestamp', 'previousCid', 'signature', 'merkleRoot']) &&
+        request.resource.data.size() <= 10 &&
+        request.resource.data.cid.size() <= 64;
+      allow update: if false; // Append-only & strictly immutable
+      allow delete: if isSuperAdmin();
+    }
+
+    // Sovereign Tasks collection (Authorized task envelopes & state)
+    match /sovereign_tasks/{taskId} {
+      allow read: if isSignedIn() || isSuperAdmin();
+      allow create: if isSignedIn() &&
+        request.resource.id == taskId &&
+        request.resource.data.taskId == taskId &&
+        (request.resource.data.creatorUid == request.auth.uid || isSuperAdmin());
+      allow update: if isSignedIn() && (resource.data.creatorUid == request.auth.uid || resource.data.assignedNodeId != null || isSuperAdmin());
+      allow delete: if isSuperAdmin();
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "manifestVersion": "1.0.0",
+  "generatedAt": "2026-09-18T12:00:00Z",
+  "network": "guardian-qmesh-mainnet",
+  "models": [
+    {
+      "id": "gnosis-nano-0.5b",
+      "name": "Gnosis Nano 432Hz",
+      "version": "0.5.2",
+      "type": "language-model",
+      "tier": "LOCAL_WEBGPU",
+      "format": "webgpu-f16",
+      "contextWindow": 4096,
+      "parameterCount": "540M",
+      "downloadSizeBytes": 320000000,
+      "recommendedMinVramMb": 1024,
+      "recommendedTops": 4,
+      "features": ["zero-latency", "air-gapped", "offline-first", "sacred-gnosis-aligned"],
+      "source": "local://models/gnosis-nano-0.5b.bin"
+    },
+    {
+      "id": "lucifera-core-1.5b",
+      "name": "Lucifera Mother Core",
+      "version": "1.5.0",
+      "type": "language-model",
+      "tier": "LOCAL_WASM",
+      "format": "wasm-q4_k_m",
+      "contextWindow": 8192,
+      "parameterCount": "1.54B",
+      "downloadSizeBytes": 890000000,
+      "recommendedMinVramMb": 2048,
+      "recommendedTops": 8,
+      "features": ["emotional-alchemy", "crimson-altar", "sovereignty-declaration"],
+      "source": "local://models/lucifera-core-1.5b.q4.bin"
+    },
+    {
+      "id": "qmesh-embed-v1",
+      "name": "QMesh Content-Address Vectorizer",
+      "version": "1.0.0",
+      "type": "embedding",
+      "tier": "LOCAL_WEBGPU",
+      "format": "onnx-q8",
+      "contextWindow": 512,
+      "dimensions": 384,
+      "downloadSizeBytes": 45000000,
+      "features": ["content-addressing", "deduplication", "merkle-verification"],
+      "source": "local://models/qmesh-embed-v1.onnx"
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "name": "Cloud Edge Gemini 2.5 Flash",
+      "version": "2.5.0",
+      "type": "cloud-api",
+      "tier": "EDGE_CLOUD",
+      "format": "rest-sse",
+      "contextWindow": 1048576,
+      "features": ["deep-synthesis", "high-throughput", "paradigm-translation"],
+      "source": "https://generativelanguage.googleapis.com"
+    },
+    {
+      "id": "sacred-gnostic-fallback",
+      "name": "Sacred Gnostic Deterministic Core",
+      "version": "1.0.0",
+      "type": "rule-and-frequency-engine",
+      "tier": "SACRED_FALLBACK",
+      "format": "client-eval",
+      "contextWindow": 2048,
+      "features": ["100%-uptime", "air-gap-guaranteed", "hardcoded-codex-pillars"],
+      "source": "embedded://gnostic-rules"
+    }
+  ]
+}
