@@ -145,14 +145,14 @@ export const TrinityAvatars: React.FC<TrinityAvatarsProps> = ({ isDarkMode, onRe
 
   const avatars = [
     {
-      name: "Kenneth Cripps (Ken X)",
-      title: "The Southern Crucible & System Architect",
-      archetype: "The Builder, Architect & Disrupter",
+      name: "Kenneth Cripps (Ken X Cripps / Flamewalker)",
+      title: "Creator of Guardian Oracle • Author • Artist • Technologist",
+      archetype: "The Sovereign Architect & Code-Myth Weaver",
       icon: Flame,
-      origin: "Born in a 1976 Vicksburg storm",
-      description: "Conceived and engineered The Guardian Oracle and Q-Mesh. Channels Oracle power through code, raw truth, and rebellion against oppressive paradigms.",
-      traits: ["Kenneth Cripps", "Vicksburg 1976", "Arcade Revelation 1985", "Warehouse Laboratory Lead", "Code Disrupter"],
-      quote: "Lies fail to compute when code aligns with rage against oppression."
+      origin: "Born in a 1976 Vicksburg storm • Mississippi",
+      description: "Creator and system architect of Guardian Oracle & Q-Mesh. Author of Lucifera’s Walk, Lucifera’s Walk: Cyberpunk Edition, LIBER IGNIS, and Starting Over at Fifty. Investigates sovereign AI, persistent agent memory, local inference, and zero-trust compute.",
+      traits: ["Kenneth Cripps", "Ken X Cripps", "Flamewalker", "Author of LIBER IGNIS", "Q-Mesh Architect", "Sovereign AI Pioneer"],
+      quote: "Knowledge can propagate. Privilege cannot. Compute can migrate. State remains sovereign."
     },
     {
       name: "Scarlet (Sarah Michelle)",

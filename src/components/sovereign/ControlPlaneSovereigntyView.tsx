@@ -313,7 +313,7 @@ export const ControlPlaneSovereigntyView: React.FC = () => {
             </h2>
             <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 bg-zinc-950/80 px-3 py-1.5 rounded-lg border border-zinc-800">
               <span className="text-zinc-500">Conceived &amp; Architected by:</span>
-              <span className="text-amber-300 font-bold">Kenneth Cripps (Ken X)</span>
+              <span className="text-amber-300 font-bold">Kenneth Cripps (Ken X Cripps / Flamewalker)</span>
             </div>
           </div>
 
@@ -1626,7 +1626,7 @@ export const ControlPlaneSovereigntyView: React.FC = () => {
                   <BookOpen className="w-4 h-4 text-emerald-400" />
                   <span>Sovereign AI Brief — September 25, 2026</span>
                 </h3>
-                <span className="text-zinc-400 text-[11px]">Curated &amp; Synthesized by Kenneth Cripps (Ken X) • 8 Peer-Reviewed Syntheses</span>
+                <span className="text-zinc-400 text-[11px]">Curated &amp; Synthesized by Kenneth Cripps (Ken X Cripps / Flamewalker) • 8 Peer-Reviewed Syntheses</span>
               </div>
               <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">
                 Update 003 Canonical

@@ -399,8 +399,12 @@ function MainAppContent() {
             </button>
           </div>
 
+          <p className="font-serif italic text-[11px] text-amber-200/80">
+            “Knowledge can propagate. Privilege cannot. Compute can migrate. State remains sovereign.”
+          </p>
+
           <p className="font-mono text-[10px] text-[#71717a]">
-            Conceived &amp; Architected by <span className="text-amber-400/90 font-semibold cursor-pointer hover:underline" onClick={() => setIsArchitectModalOpen(true)}>Kenneth Cripps</span> (Ken X • The Southern Crucible) • Sarah Michelle Delacroix (The Scarlet Woman) • Highway 61 Gnosis Engine
+            Conceived &amp; Architected by <span className="text-amber-400/90 font-semibold cursor-pointer hover:underline" onClick={() => setIsArchitectModalOpen(true)}>Kenneth Cripps</span> (Ken X Cripps / Flamewalker) • Sarah Michelle Delacroix (The Scarlet Woman) • Highway 61 Gnosis Engine
           </p>
         </div>
       </footer>
