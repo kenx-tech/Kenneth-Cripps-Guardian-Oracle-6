@@ -1,7 +1,10 @@
 {
-  "name": "react-example",
+  "name": "guardian-oracle",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "The Guardian Oracle & Q-Mesh Sovereign AI Substrate by Kenneth Cripps",
+  "author": "Kenneth Cripps <Kenx@guardianoracle.com>",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
