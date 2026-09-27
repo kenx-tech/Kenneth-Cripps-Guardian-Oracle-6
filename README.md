@@ -227,7 +227,6 @@ npm run start
 ## ⚖️ License & Attribution
 
 Conceived, architected, and engineered by **Kenneth Cripps** (Ken X Cripps / Flamewalker).  
-Co-founded in resonance with **Sarah Michelle Delacroix** (The Scarlet Woman).
 
 Released under the **MIT License**.
 
